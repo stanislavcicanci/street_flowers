@@ -1,352 +1,366 @@
-<!DOCTYPE html>
-<html lang="ro">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>FloWers | Premium 24/7 Chișinău</title>
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!DOCTYPE html>
+    <html lang="ro">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>FloWers | Premium 24/7 Chișinău</title>
+        
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://unpkg.com/lucide@latest"></script>
+        <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'>
+<circle cx='32' cy='32' r='30' fill='%23a7c040'/>
+<path d='M32 18
+        C26 14,18 18,20 26
+        C12 28,14 36,22 36
+        C22 44,30 48,32 42
+        C34 48,42 44,42 36
+        C50 36,52 28,44 26
+        C46 18,38 14,32 18Z'
+        fill='white'/>
+    <circle cx='32' cy='32' r='4' fill='%23a7c040'/>
+</svg>">
 
-    <style>
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 80px; 
-        }
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-        #acasa {
-            min-height: 100vh;
-            height: 100vh;
-        }
+        <style>
+            html {
+                scroll-behavior: smooth;
+                scroll-padding-top: 80px; 
+            }
 
-        :root { 
-            --brand-green: #a7c040; 
-            --brand-beige: #fdfbf9; 
-        }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--brand-beige);
-            overflow-x: hidden;           
-            overflow-anchor: none;          
-            margin: 0;
-            padding: 0;
-        }
-        
-        .font-serif { 
-            font-family: 'Playfair Display', serif; 
-        }
+            #acasa {
+                min-height: 100vh;
+                height: 100vh;
+            }
 
-        /* Navigare */
-        .nav-link.active { 
-            color: var(--brand-green) !important; 
-            font-weight: 700; 
-        }
-        
-        .nav-link.active::after { 
-            content: ''; 
-            display: block; 
-            width: 100%; 
-            height: 2px; 
-            background: var(--brand-green); 
-            position: absolute; 
-            bottom: -5px; 
-        }
-        
-        .nav-scrolled { 
-            background: rgba(255,255,255,0.9) !important; 
-            backdrop-filter: blur(10px); 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
-            padding: 12px 0 !important; 
-        }
+            :root { 
+                --brand-green: #a7c040; 
+                --brand-beige: #fdfbf9; 
+            }
+            
+            body {
+                font-family: 'Inter', sans-serif;
+                background-color: var(--brand-beige);
+                overflow-x: hidden;           
+                overflow-anchor: none;          
+                margin: 0;
+                padding: 0;
+            }
+            
+            .font-serif { 
+                font-family: 'Playfair Display', serif; 
+            }
 
-        /* Meniu Mobil */
-        #mobile-menu { 
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
-            transform: translateX(100%); 
-        }
-        
-        #mobile-menu.open { 
-            transform: translateX(0); 
-        }
+            /* Navigare */
+            .nav-link.active { 
+                color: var(--brand-green) !important; 
+                font-weight: 700; 
+            }
+            
+            .nav-link.active::after { 
+                content: ''; 
+                display: block; 
+                width: 100%; 
+                height: 2px; 
+                background: var(--brand-green); 
+                position: absolute; 
+                bottom: -5px; 
+            }
+            
+            .nav-scrolled { 
+                background: rgba(255,255,255,0.9) !important; 
+                backdrop-filter: blur(10px); 
+                box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+                padding: 12px 0 !important; 
+            }
 
-        /* Carduri animate */
-        .premium-card { 
-            transition: all 0.4s ease; 
-            opacity: 0; 
-            transform: translateY(20px); 
-        }
-        
-        .premium-card.visible { 
-            opacity: 1; 
-            transform: translateY(0); 
-        }
-        
-        .premium-card:hover { 
-            transform: translateY(-10px); 
-        }
+            /* Meniu Mobil */
+            #mobile-menu { 
+                transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+                transform: translateX(100%); 
+            }
+            
+            #mobile-menu.open { 
+                transform: translateX(0); 
+            }
 
-        .status-pulse { 
-            width: 10px; 
-            height: 10px; 
-            background: #22c55e; 
-            border-radius: 50%; 
-            position: relative; 
-        }
-        
-        .status-pulse::after { 
-            content:''; 
-            position:absolute; 
-            top:50%; 
-            left:50%; 
-            width:100%; 
-            height:100%; 
-            background:#22c55e; 
-            border-radius:50%; 
-            transform:translate(-50%,-50%); 
-            animation:pulse 2s infinite; 
-        }
-        
-        @keyframes pulse { 
-            0% {
-                transform:translate(-50%,-50%) scale(1);
-                opacity:1;
-            } 
-            100% {
-                transform:translate(-50%,-50%) scale(3);
-                opacity:0;
-            } 
-        }
-        
-        /* Placeholder styling */
-        .placeholder-contact {
-            color: #6b7280;
-            font-style: italic;
-        }
-        
-        .placeholder-contact:hover {
-            color: #4b5563;
-            cursor: not-allowed;
-        }
-    </style>
-</head>
-<body class="text-gray-900">
+            /* Carduri animate */
+            .premium-card { 
+                transition: all 0.4s ease; 
+                opacity: 0; 
+                transform: translateY(20px); 
+            }
+            
+            .premium-card.visible { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+            
+            .premium-card:hover { 
+                transform: translateY(-10px); 
+            }
 
-    <nav id="main-nav" class="fixed top-0 w-full z-[100] transition-all duration-300 px-6 py-6 bg-transparent">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="text-2xl font-serif font-bold tracking-tight">Flo<span style="color: var(--brand-green);">Wers</span></div>
-            <div class="hidden md:flex items-center gap-10 font-semibold text-[11px] uppercase tracking-[0.2em] text-gray-500">
-                <a href="#acasa" class="nav-link relative transition hover:text-green-600">Acasă</a>
-                <a href="#catalog" class="nav-link relative transition hover:text-green-600">Catalog</a>
-                <a href="#contact" class="nav-link relative transition hover:text-green-600">Locație</a>
+            .status-pulse { 
+                width: 10px; 
+                height: 10px; 
+                background: #22c55e; 
+                border-radius: 50%; 
+                position: relative; 
+            }
+            
+            .status-pulse::after { 
+                content:''; 
+                position:absolute; 
+                top:50%; 
+                left:50%; 
+                width:100%; 
+                height:100%; 
+                background:#22c55e; 
+                border-radius:50%; 
+                transform:translate(-50%,-50%); 
+                animation:pulse 2s infinite; 
+            }
+            
+            @keyframes pulse { 
+                0% {
+                    transform:translate(-50%,-50%) scale(1);
+                    opacity:1;
+                } 
+                100% {
+                    transform:translate(-50%,-50%) scale(3);
+                    opacity:0;
+                } 
+            }
+            
+            /* Placeholder styling */
+            .placeholder-contact {
+                color: #6b7280;
+                font-style: italic;
+            }
+            
+            .placeholder-contact:hover {
+                color: #4b5563;
+                cursor: not-allowed;
+            }
+        </style>
+    </head>
+    <body class="text-gray-900">
+
+        <nav id="main-nav" class="fixed top-0 w-full z-[100] transition-all duration-300 px-6 py-6 bg-transparent">
+            <div class="max-w-7xl mx-auto flex justify-between items-center">
+                <div class="text-2xl font-serif font-bold tracking-tight">Flo<span style="color: var(--brand-green);">Wers</span></div>
+                <div class="hidden md:flex items-center gap-10 font-semibold text-[11px] uppercase tracking-[0.2em] text-gray-500">
+                    <a href="#acasa" class="nav-link relative transition hover:text-green-600">Acasă</a>
+                    <a href="#catalog" class="nav-link relative transition hover:text-green-600">Catalog</a>
+                    <a href="#contact" class="nav-link relative transition hover:text-green-600">Locație</a>
+                </div>
+                <div class="flex items-center gap-4">
+                    <a href="#" class="hidden sm:block bg-black text-white px-6 py-2.5 rounded-full text-xs font-bold hover:bg-green-700 transition uppercase placeholder-contact" onclick="event.preventDefault()">Sună 24/7</a>
+                    <button id="burger-btn" class="md:hidden p-2 text-black"><i data-lucide="menu" class="w-7 h-7"></i></button>
+                </div>
             </div>
-            <div class="flex items-center gap-4">
-                <a href="#" class="hidden sm:block bg-black text-white px-6 py-2.5 rounded-full text-xs font-bold hover:bg-green-700 transition uppercase placeholder-contact" onclick="event.preventDefault()">Sună 24/7</a>
-                <button id="burger-btn" class="md:hidden p-2 text-black"><i data-lucide="menu" class="w-7 h-7"></i></button>
+        </nav>
+
+        <div id="mobile-menu" class="fixed inset-0 z-[150] bg-white flex flex-col p-10 md:hidden">
+            <div class="flex justify-between items-center mb-16">
+                <div class="text-2xl font-serif font-bold uppercase tracking-widest text-green-700">Meniu</div>
+                <button id="close-btn"><i data-lucide="x" class="w-8 h-8 text-black"></i></button>
+            </div>
+            <div class="flex flex-col gap-8 text-4xl font-serif font-bold italic">
+                <a href="#acasa" class="mobile-nav-link text-gray-400">Acasă</a>
+                <a href="#catalog" class="mobile-nav-link text-gray-400">Catalog</a>
+                <a href="#contact" class="mobile-nav-link text-gray-400">Locație</a>
+            </div>
+            <div class="mt-auto space-y-4">
+                <a href="#" class="block w-full text-center py-5 bg-black text-white rounded-2xl font-bold uppercase tracking-widest placeholder-contact" onclick="event.preventDefault()">Sună Acum</a>
+                <div class="flex justify-center gap-10 text-gray-400 py-4">
+                    <a href="#" class="placeholder-contact" onclick="event.preventDefault()"><i data-lucide="instagram" class="w-8 h-8"></i></a>
+                    <a href="#" class="placeholder-contact" onclick="event.preventDefault()"><i data-lucide="facebook" class="w-8 h-8"></i></a>
+                    <a href="#" class="placeholder-contact" onclick="event.preventDefault()">
+                        <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.9-.32-1.98-.23-2.81.31-.75.42-1.24 1.25-1.33 2.1-.10.7.10 1.41.54 1.94.39.48 1.02.76 1.63.74 1.10-.05 2.01-.82 2.33-1.87.12-.35.15-.73.15-1.10V.02z"/></svg>
+                    </a>
+                </div>
             </div>
         </div>
-    </nav>
 
-    <div id="mobile-menu" class="fixed inset-0 z-[150] bg-white flex flex-col p-10 md:hidden">
-        <div class="flex justify-between items-center mb-16">
-            <div class="text-2xl font-serif font-bold uppercase tracking-widest text-green-700">Meniu</div>
-            <button id="close-btn"><i data-lucide="x" class="w-8 h-8 text-black"></i></button>
-        </div>
-        <div class="flex flex-col gap-8 text-4xl font-serif font-bold italic">
-            <a href="#acasa" class="mobile-nav-link text-gray-400">Acasă</a>
-            <a href="#catalog" class="mobile-nav-link text-gray-400">Catalog</a>
-            <a href="#contact" class="mobile-nav-link text-gray-400">Locație</a>
-        </div>
-        <div class="mt-auto space-y-4">
-            <a href="#" class="block w-full text-center py-5 bg-black text-white rounded-2xl font-bold uppercase tracking-widest placeholder-contact" onclick="event.preventDefault()">Sună Acum</a>
-            <div class="flex justify-center gap-10 text-gray-400 py-4">
-                <a href="#" class="placeholder-contact" onclick="event.preventDefault()"><i data-lucide="instagram" class="w-8 h-8"></i></a>
-                <a href="#" class="placeholder-contact" onclick="event.preventDefault()"><i data-lucide="facebook" class="w-8 h-8"></i></a>
-                <a href="#" class="placeholder-contact" onclick="event.preventDefault()">
-                    <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.9-.32-1.98-.23-2.81.31-.75.42-1.24 1.25-1.33 2.1-.10.7.10 1.41.54 1.94.39.48 1.02.76 1.63.74 1.10-.05 2.01-.82 2.33-1.87.12-.35.15-.73.15-1.10V.02z"/></svg>
+        <section id="acasa" class="section relative min-h-screen flex items-center justify-center pt-20 overflow-hidden text-center px-6">
+            <div class="absolute inset-0 z-0">
+                <img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?q=80&w=1920" 
+                    class="w-full h-full object-cover brightness-90" loading="eager">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#fdfbf9] via-transparent to-black/10"></div>
+            </div>
+
+            <div class="relative z-10 fade-in">
+                <div class="flex justify-center items-center gap-3 mb-6">
+                    <div class="status-pulse"></div>
+                    <span class="text-xs font-bold tracking-[0.3em] uppercase text-gray-800 bg-white/80 px-4 py-1.5 rounded-full backdrop-blur">Livrăm acum în Chișinău</span>
+                </div>
+                <h1 class="text-6xl md:text-9xl font-serif font-bold mb-8 tracking-tighter text-green-800">Flo<span class="italic text-green-800">Wers</span></h1>
+                <p class="text-lg md:text-xl mb-10 max-w-xl mx-auto text-gray-00">Artă florală livrată în 30 de minute. <br><b>Deschis non-stop pentru tine.</b></p>
+                <a href="#" class="inline-flex bg-black text-white px-12 py-5 rounded-full font-bold shadow-2xl hover:bg-green-800 transition-all items-center gap-3 placeholder-contact" onclick="event.preventDefault()">
+                    <i data-lucide="shopping-cart" class="w-5 h-5"></i> Comandă pe Site
                 </a>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <section id="acasa" class="section relative min-h-screen flex items-center justify-center pt-20 overflow-hidden text-center px-6">
-        <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?q=80&w=1920" 
-                class="w-full h-full object-cover brightness-90" loading="eager">
-            <div class="absolute inset-0 bg-gradient-to-t from-[#fdfbf9] via-transparent to-black/10"></div>
-        </div>
+        <section id="catalog" class="section py-32 px-6">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-5xl md:text-7xl font-serif font-bold italic mb-4">Colecții</h2>
+                    <p class="text-gray-400 uppercase tracking-widest text-xs font-bold">Alege emoția potrivită</p>
+                </div>
+                
+                <div id="flower-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 text-left"></div>
 
-        <div class="relative z-10 fade-in">
-            <div class="flex justify-center items-center gap-3 mb-6">
-                <div class="status-pulse"></div>
-                <span class="text-xs font-bold tracking-[0.3em] uppercase text-gray-800 bg-white/80 px-4 py-1.5 rounded-full backdrop-blur">Livrăm acum în Chișinău</span>
+                <div class="mt-20 text-center">
+                    <button id="toggle-catalog" class="px-16 py-4 border-2 border-black rounded-full font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-all">Vezi tot catalogul</button>
+                </div>
             </div>
-            <h1 class="text-6xl md:text-9xl font-serif font-bold mb-8 tracking-tighter text-green-800">Flo<span class="italic text-green-800">Wers</span></h1>
-            <p class="text-lg md:text-xl font-light mb-10 max-w-xl mx-auto text-white">Artă florală livrată în 30 de minute. <br><b>Deschis non-stop pentru tine.</b></p>
-            <a href="#" class="inline-flex bg-black text-white px-12 py-5 rounded-full font-bold shadow-2xl hover:bg-green-800 transition-all items-center gap-3 placeholder-contact" onclick="event.preventDefault()">
-                <i data-lucide="shopping-cart" class="w-5 h-5"></i> Comandă pe Site
-            </a>
-        </div>
-    </section>
+        </section>
 
-    <section id="catalog" class="section py-32 px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-5xl md:text-7xl font-serif font-bold italic mb-4">Colecții</h2>
-                <p class="text-gray-400 uppercase tracking-widest text-xs font-bold">Alege emoția potrivită</p>
-            </div>
-            
-            <div id="flower-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 text-left"></div>
+        <section id="contact" class="section py-32 px-6 bg-white rounded-t-[4rem]">
+            <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-24 items-center">
+                <div class="space-y-12">
+                    <h2 class="text-6xl font-serif font-bold italic">Unde ne găsești?</h2>
+                    <div class="space-y-10">
+                        <div class="flex items-center gap-6 group">
+                            <div class="w-16 h-16 bg-gray-50 rounded-2xl flex items-center justify-center group-hover:bg-green-700 group-hover:text-white transition"><i data-lucide="map-pin"></i></div>
+                            <div>
+                                <p class="text-xs font-bold text-gray-400 uppercase tracking-widest">Adresa Noastră</p>
+                                <p class="text-2xl font-bold">Strada Gheorghe Asachi 15, Chișinău</p>
+                            </div>
+                        </div>
 
-            <div class="mt-20 text-center">
-                <button id="toggle-catalog" class="px-16 py-4 border-2 border-black rounded-full font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-all">Vezi tot catalogul</button>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="section py-32 px-6 bg-white rounded-t-[4rem]">
-        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-24 items-center">
-            <div class="space-y-12">
-                <h2 class="text-6xl font-serif font-bold italic">Unde ne găsești?</h2>
-                <div class="space-y-10">
-                    <div class="flex items-center gap-6 group">
-                        <div class="w-16 h-16 bg-gray-50 rounded-2xl flex items-center justify-center group-hover:bg-green-700 group-hover:text-white transition"><i data-lucide="map-pin"></i></div>
-                        <div>
-                            <p class="text-xs font-bold text-gray-400 uppercase tracking-widest">Adresa Noastră</p>
-                            <p class="text-2xl font-bold">Strada Gheorghe Asachi 15, Chișinău</p>
+                        <a href="#" class="flex items-center gap-6 group transition-all placeholder-contact" onclick="event.preventDefault()">
+                            <div class="w-16 h-16 bg-green-50 text-green-700 rounded-2xl flex items-center justify-center group-hover:bg-green-700 group-hover:text-white transition-colors duration-300 shadow-sm">
+                                <i data-lucide="phone" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold text-gray-400 uppercase tracking-widest">Contactează-ne 24/7</p>
+                                <p class="text-2xl font-bold text-gray-900 group-hover:text-green-700 transition-colors tracking-tight">+373 79 123 456</p>
+                            </div>
+                        </a>
+                        
+                        <div class="flex items-center gap-6 group">
+                            <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center group-hover:bg-green-700 group-hover:text-white transition"><i data-lucide="mail"></i></div>
+                            <div>
+                                <p class="text-xs font-bold text-gray-400 uppercase tracking-widest">Email</p>
+                                <p class="text-2xl font-bold placeholder-contact">contact@flowers.md</p>
+                            </div>
                         </div>
                     </div>
-
-                    <a href="#" class="flex items-center gap-6 group transition-all placeholder-contact" onclick="event.preventDefault()">
-                        <div class="w-16 h-16 bg-green-50 text-green-700 rounded-2xl flex items-center justify-center group-hover:bg-green-700 group-hover:text-white transition-colors duration-300 shadow-sm">
-                            <i data-lucide="phone" class="w-6 h-6"></i>
-                        </div>
-                        <div>
-                            <p class="text-xs font-bold text-gray-400 uppercase tracking-widest">Contactează-ne 24/7</p>
-                            <p class="text-2xl font-bold text-gray-900 group-hover:text-green-700 transition-colors tracking-tight">+373 79 123 456</p>
-                        </div>
-                    </a>
                     
-                    <div class="flex items-center gap-6 group">
-                        <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center group-hover:bg-green-700 group-hover:text-white transition"><i data-lucide="mail"></i></div>
-                        <div>
-                            <p class="text-xs font-bold text-gray-400 uppercase tracking-widest">Email</p>
-                            <p class="text-2xl font-bold placeholder-contact">contact@flowers.md</p>
-                        </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6">
+                        <a href="#" class="text-center py-4 bg-[#E1306C]/10 text-[#E1306C] rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-[#E1306C] hover:text-white transition shadow-sm placeholder-contact" onclick="event.preventDefault()">
+                            <i data-lucide="instagram" class="w-5 h-5"></i> Instagram
+                        </a>
+                        <a href="#" class="text-center py-4 bg-[#1877F2]/10 text-[#1877F2] rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-[#1877F2] hover:text-white transition shadow-sm placeholder-contact" onclick="event.preventDefault()">
+                            <i data-lucide="facebook" class="w-5 h-5"></i> Facebook
+                        </a>
+                        <a href="#" class="text-center py-4 bg-black/5 text-black rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-black hover:text-white transition shadow-sm placeholder-contact" onclick="event.preventDefault()">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.9-.32-1.98-.23-2.81.31-.75.42-1.24 1.25-1.33 2.1-.10.7.10 1.41.54 1.94.39.48 1.02.76 1.63.74 1.10-.05 2.01-.82 2.33-1.87.12-.35.15-.73.15-1.10V.02z"/></svg> TikTok
+                        </a>
                     </div>
                 </div>
                 
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6">
-                    <a href="#" class="text-center py-4 bg-[#E1306C]/10 text-[#E1306C] rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-[#E1306C] hover:text-white transition shadow-sm placeholder-contact" onclick="event.preventDefault()">
-                        <i data-lucide="instagram" class="w-5 h-5"></i> Instagram
-                    </a>
-                    <a href="#" class="text-center py-4 bg-[#1877F2]/10 text-[#1877F2] rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-[#1877F2] hover:text-white transition shadow-sm placeholder-contact" onclick="event.preventDefault()">
-                        <i data-lucide="facebook" class="w-5 h-5"></i> Facebook
-                    </a>
-                    <a href="#" class="text-center py-4 bg-black/5 text-black rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-black hover:text-white transition shadow-sm placeholder-contact" onclick="event.preventDefault()">
-                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.9-.32-1.98-.23-2.81.31-.75.42-1.24 1.25-1.33 2.1-.10.7.10 1.41.54 1.94.39.48 1.02.76 1.63.74 1.10-.05 2.01-.82 2.33-1.87.12-.35.15-.73.15-1.10V.02z"/></svg> TikTok
-                    </a>
+                <div class="h-[500px] rounded-[3rem] overflow-hidden border-[15px] border-gray-50 shadow-2xl">
+                <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2720.1718952112947!2d28.8392907!3d47.0297201!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40c97e9f1d5e1b7d%3A0xf63c86d6e2d2e4f1!2sStrada%20Gheorghe%20Asachi%2015%2C%20Chi%C8%99in%C4%83u%2C%20Moldova!5e0!3m2!1sen!2s!4v164874567890!5m2!1sen!2s" 
+        width="100%" 
+        height="100%" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy">
+    </iframe>
+
                 </div>
             </div>
-            
-            <div class="h-[500px] rounded-[3rem] overflow-hidden border-[15px] border-gray-50 shadow-2xl">
-            <iframe 
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2720.1718952112947!2d28.8392907!3d47.0297201!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40c97e9f1d5e1b7d%3A0xf63c86d6e2d2e4f1!2sStrada%20Gheorghe%20Asachi%2015%2C%20Chi%C8%99in%C4%83u%2C%20Moldova!5e0!3m2!1sen!2s!4v164874567890!5m2!1sen!2s" 
-    width="100%" 
-    height="100%" 
-    style="border:0;" 
-    allowfullscreen="" 
-    loading="lazy">
-</iframe>
+        </section>
 
-            </div>
-        </div>
-    </section>
+        <footer class="bg-black text-white py-12 text-center text-[10px] uppercase tracking-[0.3em] font-bold">
+            © 2026 FloWers Chișinău • FloWers S.R.L
+        </footer>
 
-    <footer class="bg-black text-white py-12 text-center text-[10px] uppercase tracking-[0.3em] font-bold">
-        © 2026 FloWers Chișinău • FloWers S.R.L
-    </footer>
+        <script>
+            lucide.createIcons();
 
-    <script>
-        lucide.createIcons();
+            // 1. ACEST JSON ESTE SINGURUL LOC UNDE FACI MODIFICĂRI
+            const flowerData = [
+                { nume: "Royal Red Roses", pret: "1200 MDL", img: "https://californiaflowers.ro/cdn/shop/products/222_3b285eb0-53c7-47b9-b61a-ee036dc5f439.jpg?v=1680676858", premium: true },
+                { nume: "Pastel Harmony", pret: "850 MDL", img: "https://images.unsplash.com/photo-1591886960571-74d43a9d4166?w=800", premium: true },
+                { nume: "Velvet Dream", pret: "1100 MDL", img: "https://images.unsplash.com/photo-1533616688419-b7a585564566?w=800", premium: true },
+                { nume: "White Grace", pret: "950 MDL", img: "https://i.pinimg.com/736x/ed/a1/36/eda1364355a43ca09abf99e393546320.jpg", premium: false },
+                { nume: "Night Romance", pret: "1500 MDL", img: "https://i.pinimg.com/736x/0f/10/db/0f10dbc3e26574372a386a4d6968fbc4.jpg", premium: true},
+                { nume: "Spring Whispers", pret: "700 MDL", img: "https://i.pinimg.com/736x/09/95/c4/0995c4fbd9baa5100072cdb95563b38e.jpg", premium: false }
+            ];
 
-        // 1. ACEST JSON ESTE SINGURUL LOC UNDE FACI MODIFICĂRI
-        const flowerData = [
-            { nume: "Royal Red Roses", pret: "1200 MDL", img: "https://californiaflowers.ro/cdn/shop/products/222_3b285eb0-53c7-47b9-b61a-ee036dc5f439.jpg?v=1680676858", premium: true },
-            { nume: "Pastel Harmony", pret: "850 MDL", img: "https://images.unsplash.com/photo-1591886960571-74d43a9d4166?w=800", premium: true },
-            { nume: "Velvet Dream", pret: "1100 MDL", img: "https://images.unsplash.com/photo-1533616688419-b7a585564566?w=800", premium: true },
-            { nume: "White Grace", pret: "950 MDL", img: "https://i.pinimg.com/736x/ed/a1/36/eda1364355a43ca09abf99e393546320.jpg", premium: false },
-            { nume: "Night Romance", pret: "1500 MDL", img: "https://i.pinimg.com/736x/0f/10/db/0f10dbc3e26574372a386a4d6968fbc4.jpg", premium: true},
-            { nume: "Spring Whispers", pret: "700 MDL", img: "https://i.pinimg.com/736x/09/95/c4/0995c4fbd9baa5100072cdb95563b38e.jpg", premium: false }
-        ];
+            let isExpanded = false;
+            const grid = document.getElementById('flower-grid');
+            const btnToggle = document.getElementById('toggle-catalog');
 
-        let isExpanded = false;
-        const grid = document.getElementById('flower-grid');
-        const btnToggle = document.getElementById('toggle-catalog');
+            // Funcția de creare a cardului
+            function renderGallery() {
+                grid.innerHTML = "";
+                const itemsToShow = isExpanded ? flowerData : flowerData.slice(0, 3);
+                
+                itemsToShow.forEach((item, index) => {
+                    const card = document.createElement('div');
+                    card.className = `group premium-card visible`;
+                    card.innerHTML = `
+                        <div class="relative aspect-[3/4] overflow-hidden rounded-[2.5rem] border-[10px] border-white shadow-xl">
+                            <img src="${item.img}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            ${item.premium ? '<div class="absolute top-5 left-5 bg-black text-white text-[9px] px-3 py-1 rounded-full uppercase tracking-widest font-bold">Premium</div>' : ''}
+                            <div class="absolute bottom-6 right-6 bg-white/90 backdrop-blur text-black px-5 py-2 rounded-full font-bold text-sm shadow-lg border border-black/5">${item.pret}</div>
+                        </div>
+                        <h3 class="mt-6 text-2xl font-serif font-bold text-center text-gray-800">${item.nume}</h3>
+                    `;
+                    grid.appendChild(card);
+                });
+            }
 
-        // Funcția de creare a cardului
-        function renderGallery() {
-            grid.innerHTML = "";
-            const itemsToShow = isExpanded ? flowerData : flowerData.slice(0, 3);
-            
-            itemsToShow.forEach((item, index) => {
-                const card = document.createElement('div');
-                card.className = `group premium-card visible`;
-                card.innerHTML = `
-                    <div class="relative aspect-[3/4] overflow-hidden rounded-[2.5rem] border-[10px] border-white shadow-xl">
-                        <img src="${item.img}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        ${item.premium ? '<div class="absolute top-5 left-5 bg-black text-white text-[9px] px-3 py-1 rounded-full uppercase tracking-widest font-bold">Premium</div>' : ''}
-                        <div class="absolute bottom-6 right-6 bg-white/90 backdrop-blur text-black px-5 py-2 rounded-full font-bold text-sm shadow-lg border border-black/5">${item.pret}</div>
-                    </div>
-                    <h3 class="mt-6 text-2xl font-serif font-bold text-center text-gray-800">${item.nume}</h3>
-                `;
-                grid.appendChild(card);
-            });
-        }
-
-        // Inițializare galerie
-        renderGallery();
-
-        btnToggle.onclick = () => {
-            isExpanded = !isExpanded;
-            btnToggle.innerText = isExpanded ? "Arată mai puțin" : "Vezi tot catalogul";
+            // Inițializare galerie
             renderGallery();
-            if(!isExpanded) window.location.hash = "catalog";
-        };
 
-        // Meniu Mobil & Scroll
-        const burger = document.getElementById('burger-btn');
-        const close = document.getElementById('close-btn');
-        const menu = document.getElementById('mobile-menu');
-        burger.onclick = () => menu.classList.add('open');
-        close.onclick = () => menu.classList.remove('open');
-        document.querySelectorAll('.mobile-nav-link').forEach(l => l.onclick = () => menu.classList.remove('open'));
+            btnToggle.onclick = () => {
+                isExpanded = !isExpanded;
+                btnToggle.innerText = isExpanded ? "Arată mai puțin" : "Vezi tot catalogul";
+                renderGallery();
+                if(!isExpanded) window.location.hash = "catalog";
+            };
 
-        // Prevenirea acțiunii pentru toate linkurile cu clasa placeholder-contact
-        document.querySelectorAll('.placeholder-contact').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                // Opțional: puteți adăuga un mesaj de alertă sau un efect vizual
-                console.log('Acest link este placeholder și nu funcționează momentan.');
-            });
-        });
+            // Meniu Mobil & Scroll
+            const burger = document.getElementById('burger-btn');
+            const close = document.getElementById('close-btn');
+            const menu = document.getElementById('mobile-menu');
+            burger.onclick = () => menu.classList.add('open');
+            close.onclick = () => menu.classList.remove('open');
+            document.querySelectorAll('.mobile-nav-link').forEach(l => l.onclick = () => menu.classList.remove('open'));
 
-        window.onscroll = () => {
-            const nav = document.getElementById('main-nav');
-            const sections = document.querySelectorAll('.section');
-            const navLinks = document.querySelectorAll('.nav-link');
-            
-            let curr = "";
-            sections.forEach(s => { if (pageYOffset >= s.offsetTop - 150) curr = s.getAttribute('id'); });
-            navLinks.forEach(l => {
-                l.classList.remove('active');
-                if (l.getAttribute('href').includes(curr)) l.classList.add('active');
+            // Prevenirea acțiunii pentru toate linkurile cu clasa placeholder-contact
+            document.querySelectorAll('.placeholder-contact').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    // Opțional: puteți adăuga un mesaj de alertă sau un efect vizual
+                    console.log('Acest link este placeholder și nu funcționează momentan.');
+                });
             });
 
-            if (window.scrollY > 80) nav.classList.add('nav-scrolled');
-            else nav.classList.remove('nav-scrolled');
-        };
-    </script>
-</body>
-</html>
+            window.onscroll = () => {
+                const nav = document.getElementById('main-nav');
+                const sections = document.querySelectorAll('.section');
+                const navLinks = document.querySelectorAll('.nav-link');
+                
+                let curr = "";
+                sections.forEach(s => { if (pageYOffset >= s.offsetTop - 150) curr = s.getAttribute('id'); });
+                navLinks.forEach(l => {
+                    l.classList.remove('active');
+                    if (l.getAttribute('href').includes(curr)) l.classList.add('active');
+                });
+
+                if (window.scrollY > 80) nav.classList.add('nav-scrolled');
+                else nav.classList.remove('nav-scrolled');
+            };
+        </script>
+    </body>
+    </html>
